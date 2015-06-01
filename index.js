@@ -5,7 +5,7 @@
 var fs = require('fs');
 var querystring = require('querystring');
 
-if (process.argv[2] == undefined) {
+if (process.argv[2] === undefined) {
 	console.log("argv:", process.argv);
 }
 
