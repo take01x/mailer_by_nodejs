@@ -1,0 +1,19 @@
+{
+  "name": "mailer_by_nodejs",
+  "version": "1.0.0",
+  "description": "Get email which has not read yet.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/take01x/mailer_by_nodejs.git"
+  },
+  "author": "Takehiro YOSHIHAMA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/take01x/mailer_by_nodejs/issues"
+  },
+  "homepage": "https://github.com/take01x/mailer_by_nodejs#readme"
+}
