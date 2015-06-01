@@ -1,6 +1,18 @@
 #!/usr/bin/env node
 
 'use strict';
-console.log("Hello Cmail.");
-console.log(process.argv);
-console.log(process.env.HOME);
+
+var fs = require('fs');
+
+if (process.argv[2] == undefined) {
+	console.log("argv:", process.argv);
+}
+
+if (process.argv[2] == "home") {
+	console.log("HOME:", process.env.HOME);
+}
+
+if (process.argv[2] == "init") {
+	var config = JSON.parse(fs.readFileSync(",/config.json")).installed;
+	console.log(config);
+}
