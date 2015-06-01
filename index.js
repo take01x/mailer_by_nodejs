@@ -32,6 +32,22 @@ if (process.argv[2] == "init") {
 	open(url);
 }
 
+if (process.argv[2] == "init_readonly") {
+	var config = JSON.parse(fs.readFileSync(",/config.json")).installed;
+	var params = {
+		response_type: 'code',
+		approval_prompt: 'force',
+		access_type: 'offline',
+		client_id: config.client_id,
+		redirect_uri: config.redirect_uris[0],
+		scope: 'https://www.googleapis.com/auth/gmail.readonly',
+		state: 'some random string'
+	};
+
+	var url = config.auth_uri + "?" + querystring.encode(params);
+	open(url);
+}
+
 if (process.argv[2] == "token") {
 	var config = JSON.parse(fs.readFileSync(",/config.json")).installed;
 	var code = readline.question("Input returned code:");
@@ -78,5 +94,28 @@ if (process.argv[2] == "labels") {
 			return false;
 		}
 		console.log(body.labels);
+	});
+}
+
+if (process.argv[2] == "messages") {
+	var token = JSON.parse(fs.readFileSync(",/token.json"));
+	var endpoint = 'https://www.googleapis.com/gmail/v1/users/me/messages';
+	var params = {
+		access_token: token.access_token,
+		prettyPrint: true
+	};
+	var options = {
+		uri: endpoint,
+		qs: params,
+		json: true
+	};
+	request.get(options, function (error, response, body) {
+		if (response.statusCode !== 200) {
+			console.log("Error:", error);
+			console.log("Status_body:", response.statusCode);
+			console.log("body:", body);
+			return false;
+		}
+		console.log(body.messages);
 	});
 }
