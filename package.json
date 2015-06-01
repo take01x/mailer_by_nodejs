@@ -16,5 +16,12 @@
   },
   "homepage": "https://github.com/take01x/mailer_by_nodejs#readme",
   "preferGlobal": true,
-  "bin": "index.js"
+  "bin": "index.js",
+  "dependencies": {
+    "fs": "0.0.2",
+    "open": "0.0.5",
+    "querystring": "^0.2.0",
+    "readline-sync": "^1.2.17",
+    "request": "^2.57.0"
+  }
 }
